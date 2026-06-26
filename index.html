@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FitTrack — Body Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <button class="side-icon active" data-step="1" title="Current photo" aria-label="Current photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h2l1.5-2h9L18 7h2a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.3"/></svg>
+    </button>
+    <button class="side-icon" data-step="2" title="Your stats" aria-label="Your stats">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+    </button>
+    <button class="side-icon" data-step="3" title="Dream physique" aria-label="Dream physique">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+    </button>
+    <button class="side-icon" data-step="4" title="Your plan" aria-label="Your plan">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M7 19v-6M12 19V6M17 19v-9"/></svg>
+    </button>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="topbar">
+      <span class="eyebrow">FitTrack</span>
+      <span class="step-chip" id="stepChip">Step 1 of 4</span>
+    </div>
+
+    <div class="screens">
+
+      <!-- STEP 1: CURRENT PHOTO -->
+      <section class="screen active" id="screen-1">
+        <h1>Add your current photo</h1>
+        <p class="sub">A quick visual snapshot to track your progress against. <span class="muted-tag">Optional</span></p>
+
+        <div class="upload-card">
+          <input type="file" accept="image/*" id="input-current" hidden>
+          <label for="input-current" class="upload-drop">
+            <img id="preview-current" class="upload-preview" hidden alt="Current body preview">
+            <span class="upload-empty">
+              <span class="upload-badge badge-purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16.5V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5M16 8l-4-4-4 4M12 4v12"/></svg>
+              </span>
+              <span class="upload-text">Tap to upload a photo</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 2: STATS -->
+      <section class="screen" id="screen-2">
+        <h1>Tell us about you</h1>
+        <p class="sub">This is what your calorie and macro plan is built from.</p>
+
+        <div class="field">
+          <label>Sex</label>
+          <div class="pill-group" id="sexPills">
+            <button type="button" class="pill active" data-sex="male">Male</button>
+            <button type="button" class="pill" data-sex="female">Female</button>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="e.g. 27" min="14" max="90" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" placeholder="e.g. 175" min="1" inputmode="decimal">
+          </div>
+          <div class="field">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="e.g. 72" min="1" inputmode="decimal">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Activity level</label>
+          <div class="pill-group" id="activityPills">
+            <button type="button" class="pill" data-activity="1.2">Low</button>
+            <button type="button" class="pill active" data-activity="1.55">Moderate</button>
+            <button type="button" class="pill" data-activity="1.9">High</button>
+          </div>
+        </div>
+
+        <p class="field-error" id="error-2" hidden></p>
+      </section>
+
+      <!-- STEP 3: DREAM PHYSIQUE -->
+      <section class="screen" id="screen-3">
+        <h1>Add your dream physique</h1>
+        <p class="sub">Upload a reference photo to aim for. <span class="muted-tag">Optional</span></p>
+
+        <div class="upload-card">
+          <input type="file" accept="image/*" id="input-dream" hidden>
+          <label for="input-dream" class="upload-drop upload-drop-pink">
+            <img id="preview-dream" class="upload-preview" hidden alt="Dream physique preview">
+            <span class="upload-empty">
+              <span class="upload-badge badge-pink">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16.5V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5M16 8l-4-4-4 4M12 4v12"/></svg>
+              </span>
+              <span class="upload-text">Tap to upload a photo</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 4: RESULTS -->
+      <section class="screen" id="screen-4">
+        <h1>Your daily plan</h1>
+        <p class="sub">Based on what you entered — a starting point, not a prescription.</p>
+
+        <div class="photo-compare">
+          <div class="compare-thumb">
+            <img id="result-current" alt="Current">
+            <span class="compare-tag tag-purple">Current</span>
+          </div>
+          <div class="compare-thumb">
+            <img id="result-dream" alt="Dream">
+            <span class="compare-tag tag-pink">Dream</span>
+          </div>
+        </div>
+
+        <div class="stat-cards">
+          <div class="stat-card grad-purple">
+            <span class="stat-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>
+            </span>
+            <span class="stat-card-label">Calories to burn</span>
+            <span class="stat-card-value" id="resultBurn">—</span>
+            <span class="stat-card-unit">kcal / day</span>
+          </div>
+          <div class="stat-card grad-pink">
+            <span class="stat-card-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c-4.4-3-8-6.4-8-10.6A4.9 4.9 0 0 1 9 5.6c1.3 0 2.5.6 3 1.6.5-1 1.7-1.6 3-1.6a4.9 4.9 0 0 1 5 4.8C20 14.6 16.4 18 12 21z"/></svg>
+            </span>
+            <span class="stat-card-label">Calories to eat</span>
+            <span class="stat-card-value" id="resultTake">—</span>
+            <span class="stat-card-unit">kcal / day</span>
+          </div>
+        </div>
+
+        <div class="macro-card">
+          <div class="macro-row">
+            <span class="macro-name">Protein</span>
+            <div class="macro-track"><div class="macro-fill fill-purple" id="barProtein"></div></div>
+            <span class="macro-value" id="valProtein">—</span>
+          </div>
+          <div class="macro-row">
+            <span class="macro-name">Carbs</span>
+            <div class="macro-track"><div class="macro-fill fill-pink" id="barCarbs"></div></div>
+            <span class="macro-value" id="valCarbs">—</span>
+          </div>
+          <div class="macro-row">
+            <span class="macro-name">Fat</span>
+            <div class="macro-track"><div class="macro-fill fill-green" id="barFat"></div></div>
+            <span class="macro-value" id="valFat">—</span>
+          </div>
+        </div>
+
+        <p class="disclaimer">Estimates from standard formulas — not medical advice. For big changes or health conditions, check with a doctor or dietitian.</p>
+
+        <button type="button" class="btn btn-ghost btn-block" id="btnRestart">Start over</button>
+      </section>
+
+    </div>
+
+    <nav class="bottom-nav">
+      <button type="button" class="btn btn-ghost" id="btnBack" disabled>Back</button>
+      <button type="button" class="btn btn-primary" id="btnNext">Next</button>
+    </nav>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
